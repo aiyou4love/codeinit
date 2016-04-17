@@ -1,6 +1,4 @@
 ﻿{
-"123"	:"2344",
-"3455"	:"441",
-"3322"	:"44",
-"23445"	:"232244"
+"shellCommand"	:"~/Config/Beta/shellCommand.json",
+"commands"		:"~/Config/Beta/commands.json"
 }

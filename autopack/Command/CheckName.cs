@@ -12,5 +12,9 @@ namespace autopack
         {
             
         }
+        public bool isStop()
+        {
+            return true;
+        }
     }
 }

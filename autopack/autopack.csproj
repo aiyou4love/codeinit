@@ -919,6 +919,7 @@
   <ItemGroup>
     <Content Include="Config\Beta\shellCommand.json" />
     <Content Include="Config\Pack\shellCommand.json" />
+    <Content Include="Config\Beta\commands.json" />
     <None Include="Properties\PublishProfiles\autopack.pubxml" />
     <Content Include="Scripts\easyui\demo\accordion\datagrid_data1.json" />
     <Content Include="Scripts\easyui\demo\combobox\combobox_data1.json" />

@@ -8,7 +8,7 @@ namespace autopack
     [Serializable]
     public class Command
     {
-        string mType { get; set; }
-        string mName { get; set; }
+        public string mType { get; set; }
+        public string mName { get; set; }
     }
 }

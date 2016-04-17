@@ -30,11 +30,13 @@ namespace autopack.Controllers
 
             return View();
         }
-        public void Next()
+        public void runNext()
         {
+            CommandMgr commandMgr_ = CommandMgr.instance();
+            commandMgr_.runNext();
         }
 
-        public void Prev()
+        public void runPrev()
         {
         }
 

@@ -12,6 +12,11 @@ namespace autopack
 
         public void runInit(HttpServerUtilityBase nServer, string nConfigFile)
         {
+            if (null != mDirectorys)
+            {
+                mDirectorys.Clear();
+            }
+
             string path_ = nServer.MapPath(nConfigFile);
             mDirectorys = Deserialize<Dictionary<string, string>>(path_);
         }

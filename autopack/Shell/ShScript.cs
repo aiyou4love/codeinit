@@ -40,11 +40,11 @@ namespace autopack
         }
         private void outputDataReceived(object sender, DataReceivedEventArgs e)
         {
-            if (e.Data != null)
-            {
-                CommandMgr commandMgr = CommandMgr.instance();
-                commandMgr.mQueue.Enqueue(e.Data);
-            }
+            if (null == e.Data) return;
+            string value_ = e.Data.Trim();
+            if ("" == value_) return;
+            CommandMgr commandMgr = CommandMgr.instance();
+            commandMgr.mQueue.Enqueue(value_);
         }
         private void processExited(object sender, EventArgs e)
         {

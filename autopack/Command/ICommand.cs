@@ -9,5 +9,7 @@ namespace autopack
     public interface ICommand
     {
         void runCommand();
+
+        bool isStop();
     }
 }

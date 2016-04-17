@@ -12,11 +12,13 @@ namespace autopack
         public string mCommand { get; set; }
         public void runCommand()
         {
-            StringDirectory stringDirectory_ = StringDirectory.instance();
-            string sourcePath_ = stringDirectory_.mDirectorys[mDirectory];
-
             Script script_ = Script.instance();
-            script_.runCommand(sourcePath_, mCommand);
+            script_.runCommand(mDirectory, mCommand);
+        }
+        public bool isStop()
+        {
+            Script script_ = Script.instance();
+            return script_.isStop();
         }
     }
 }

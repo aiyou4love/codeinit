@@ -14,6 +14,9 @@ namespace autopack
         {
             if (!mStop) return;
 
+            CommandMgr commandMgr = CommandMgr.instance();
+            commandMgr.mQueue.Enqueue("$$$$命令执行开始$$$$");
+
             mStop = false;
 
             mOutput.Clear();
@@ -46,14 +49,21 @@ namespace autopack
 
             foreach (PSObject i in outputs_)
             {
+                string value_ = i.ToString();
+                value_ = value_.Trim();
+                if ("" == value_) continue;
                 CommandMgr commandMgr = CommandMgr.instance();
-                commandMgr.mQueue.Enqueue(i.ToString());
+                commandMgr.mQueue.Enqueue(value_);
             }
         }
         void invocationStateChanged(object sender, PSInvocationStateChangedEventArgs e)
         {
             if (e.InvocationStateInfo.State == PSInvocationState.Completed)
             {
+                CommandMgr commandMgr = CommandMgr.instance();
+                commandMgr.mQueue.Enqueue("$$$$命令执行完成$$$$");
+                commandMgr.mQueue.Enqueue("$end$");
+                
                 mStop = true;
             }
         }

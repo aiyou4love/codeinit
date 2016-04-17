@@ -11,19 +11,23 @@ namespace autopack
         {
             mScript.runCommand(nWorkDirectory, nCommand);
         }
-
+        public bool isStop()
+        {
+            return mScript.isStop();
+        }
         public void runInit()
         {
+            if (null != mScript) return;
             OperatingSystem operatingSystem_ = Environment.OSVersion;
             PlatformID platformID_ = operatingSystem_.Platform;
             if ( (platformID_ == PlatformID.Unix)
-                || (platformID_ == PlatformID.Unix))
+                || (platformID_ == PlatformID.MacOSX))
             {
-                mScript = new BatScript();
+                mScript = new ShScript();
             }
             else
             {
-                mScript = new ShScript();
+                mScript = new BatScript();
             }
             mScript.runInit();
         }
