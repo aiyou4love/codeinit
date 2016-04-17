@@ -9,7 +9,7 @@ namespace autopack
     {
         public Dictionary<int, Command> mCommands;
 
-        public Queue<string> mQueue;
+        public Queue<string> mQueue = new Queue<string>();
 
         public void runInit(HttpServerUtilityBase nServer)
         {
@@ -18,7 +18,7 @@ namespace autopack
             string path_ = nServer.MapPath(sourcePath_);
             mCommands = Deserialize<Dictionary<int, Command>>(path_);
 
-            mQueue = new Queue<string>();
+            mQueue.Clear();
         }
 
         public static CommandMgr instance()

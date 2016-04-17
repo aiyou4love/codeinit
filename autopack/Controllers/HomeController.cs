@@ -15,7 +15,7 @@ namespace autopack.Controllers
         public ActionResult AutoPack(int nType)
         {
             string path_ = "~/Config/Beta/directory.json";
-            if ( (nType > 2) &&(nType < 4) )
+            if ((nType > 2) && (nType < 4))
             {
                 path_ = "~/Config/Pack/directory.json";
             }
@@ -29,6 +29,23 @@ namespace autopack.Controllers
             commandMgr_.runInit(Server);
 
             return View();
+        }
+        public void Next()
+        {
+        }
+
+        public void Prev()
+        {
+        }
+
+        public string runOutput()
+        {
+            CommandMgr commandMgr_ = CommandMgr.instance();
+            if (commandMgr_.mQueue.Count > 0)
+            {
+                return commandMgr_.mQueue.Dequeue();
+            }
+            return "";
         }
     }
 }
