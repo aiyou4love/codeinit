@@ -119,7 +119,31 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Shell\BaseCommand.cs" />
+    <Compile Include="Archive\CheckNameOnce.cs" />
+    <Compile Include="Archive\CopyDirectory.cs" />
+    <Compile Include="Archive\CopyFile.cs" />
+    <Compile Include="Archive\CopyOnce.cs" />
+    <Compile Include="Archive\DeleteOnce.cs" />
+    <Compile Include="Archive\Header.cs" />
+    <Compile Include="Archive\IfFile.cs" />
+    <Compile Include="Archive\SZipDirectory.cs" />
+    <Compile Include="Archive\ZipIfOnce.cs" />
+    <Compile Include="Archive\ZipOnce.cs" />
+    <Compile Include="Bundle\BuildBundle.cs" />
+    <Compile Include="Bundle\BuildPackage.cs" />
+    <Compile Include="Bundle\BundleInfo.cs" />
+    <Compile Include="Bundle\FinishBundle.cs" />
+    <Compile Include="Bundle\InitBundle.cs" />
+    <Compile Include="Archive\Md5Info.cs" />
+    <Compile Include="Command\CheckName.cs" />
+    <Compile Include="Command\Server.cs" />
+    <Compile Include="Command\Command.cs" />
+    <Compile Include="Command\StringDirectory.cs" />
+    <Compile Include="Command\CommandMgr.cs" />
+    <Compile Include="Command\ICommand.cs" />
+    <Compile Include="Command\ShellCommandMgr.cs" />
+    <Compile Include="Command\VersionNo.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Shell\BatScript.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -127,7 +151,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shell\IScript.cs" />
     <Compile Include="Shell\Script.cs" />
+    <Compile Include="Serialize\SerailizeJson.cs" />
     <Compile Include="Shell\ShScript.cs" />
+    <Compile Include="Command\ShellCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -145,11 +171,25 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\Beta\directory.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\AutoPack.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\Pack\directory.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\autopack.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

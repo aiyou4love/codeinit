@@ -12,43 +12,48 @@ namespace autopack
     {
         public void runCommand(string nWorkDirectory, string nCommand)
         {
+            if (!mStop) return;
+
+            mStop = false;
+
             mProcess = new Process();
             mProcess.StartInfo.FileName = nCommand;
             mProcess.StartInfo.WorkingDirectory = nWorkDirectory;
             mProcess.StartInfo.UseShellExecute = false;
             mProcess.StartInfo.RedirectStandardOutput = true;
+
+            mProcess.OutputDataReceived += new DataReceivedEventHandler(outputDataReceived);
+            mProcess.EnableRaisingEvents = true;
+            mProcess.Exited += new EventHandler(processExited);
+
             mProcess.Start();
 
-            mStreamReader = mProcess.StandardOutput;
-
-            mThread = new Thread(outputInterpreter);
-            mThread.IsBackground = true;
-            mThread.Start();
+            mProcess.BeginOutputReadLine();
         }
-
         public void runInit()
         {
-            mQueue = new Queue<string>();
+            mStop = true;
         }
-
         public bool isStop()
         {
-            return false;
+            return mStop;
         }
-        void outputInterpreter()
+        private void outputDataReceived(object sender, DataReceivedEventArgs e)
         {
-            string line_;
-            while ((line_ = mStreamReader.ReadLine()) != null)
+            if (e.Data != null)
             {
-                mQueue.Enqueue(line_);
+                CommandMgr commandMgr = CommandMgr.instance();
+                commandMgr.mQueue.Enqueue(e.Data);
             }
         }
+        private void processExited(object sender, EventArgs e)
+        {
+            mProcess.Dispose();
 
-        Queue<string> mQueue;
-
-        StreamReader mStreamReader;
+            mStop = true;
+        }
 
         Process mProcess;
-        Thread mThread;
+        bool mStop;
     }
 }

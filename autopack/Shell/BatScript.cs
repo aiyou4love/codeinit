@@ -14,7 +14,8 @@ namespace autopack
         {
             if (!mStop) return;
 
-            mQueue.Clear();
+            mStop = false;
+
             mOutput.Clear();
 
             string root_ = Path.GetPathRoot(nWorkDirectory);
@@ -22,14 +23,11 @@ namespace autopack
             mPowerShell.AddScript("cd " + nWorkDirectory);
             mPowerShell.AddScript(nCommand);
 
-            mAsyncResult = mPowerShell.BeginInvoke<PSObject, PSObject>(null, mOutput);
-
-            mStop = false;
+            mPowerShell.BeginInvoke<PSObject, PSObject>(null, mOutput);
         }
-
         public void runInit()
         {
-            mQueue = new Queue<string>();
+            mStop = true;
 
             mPowerShell = PowerShell.Create();
             mPowerShell.InvocationStateChanged +=
@@ -38,36 +36,29 @@ namespace autopack
             mOutput = new PSDataCollection<PSObject>();
             mOutput.DataAdded += new EventHandler<DataAddedEventArgs>(dataAdded);
         }
-
         public bool isStop()
         {
             return mStop;
         }
-
         void dataAdded(object sender, DataAddedEventArgs e)
         {
             Collection<PSObject> outputs_ = mOutput.ReadAll();
 
             foreach (PSObject i in outputs_)
             {
-                mQueue.Enqueue(i.ToString());
+                CommandMgr commandMgr = CommandMgr.instance();
+                commandMgr.mQueue.Enqueue(i.ToString());
             }
         }
-
         void invocationStateChanged(object sender, PSInvocationStateChangedEventArgs e)
         {
             if (e.InvocationStateInfo.State == PSInvocationState.Completed)
             {
-                mPowerShell.EndInvoke(mAsyncResult);
-                mAsyncResult = null;
                 mStop = true;
             }
         }
 
-        Queue<string> mQueue;
-
         PSDataCollection<PSObject> mOutput;
-        IAsyncResult mAsyncResult;
 
         PowerShell mPowerShell;
         bool mStop;

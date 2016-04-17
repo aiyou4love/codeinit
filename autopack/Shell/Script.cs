@@ -32,11 +32,6 @@ namespace autopack
             return mInstance;
         }
 
-        public Script()
-        {
-            mInstance.runInit();
-        }
-
         static Script mInstance = new Script();
 
         IScript mScript;
