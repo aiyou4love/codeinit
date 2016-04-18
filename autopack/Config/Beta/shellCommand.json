@@ -1,4 +1,6 @@
 ﻿{
 "codegit":{"mDirectory":"C:\\unseen\\codeinit", "mCommand":"git pull origin master"},
-"code1git":{"mDirectory":"C:\\unseen\\unseen", "mCommand":"git pull origin master"}
+"code1git":{"mDirectory":"C:\\unseen\\unseen", "mCommand":"git pull origin master"},
+"codesvn":{"mDirectory":"E:\\Moba_Phone_Code", "mCommand":"svn up"},
+"code1svn":{"mDirectory":"E:\\Moba_Phone_Code\\data\\bin", "mCommand":"svn up"}
 }

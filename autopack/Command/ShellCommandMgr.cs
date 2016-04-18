@@ -29,6 +29,7 @@ namespace autopack
                return;
            }
            ShellCommand shellCommand_ = mShellCommands[nCommand];
+           commandMgr_.mCommand = shellCommand_;
            shellCommand_.runCommand();
        }
        public static ShellCommandMgr instance()

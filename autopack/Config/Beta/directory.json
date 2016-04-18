@@ -1,4 +1,6 @@
 ﻿{
+"commands"		:"~/Config/Beta/commands.json",
 "shellCommand"	:"~/Config/Beta/shellCommand.json",
-"commands"		:"~/Config/Beta/commands.json"
+"checkName"		:"~/Config/Beta/checkName.json",
+"versionNo"		:"~/Config/Beta/versionNo.json",
 }

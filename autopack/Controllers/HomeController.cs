@@ -25,8 +25,10 @@ namespace autopack.Controllers
             script_.runInit();
             ShellCommandMgr shellCommandMgr_ = ShellCommandMgr.instance();
             shellCommandMgr_.runInit(Server);
+            CheckNameMgr checkNameMgr_ = CheckNameMgr.instance();
+            checkNameMgr_.runInit(Server);
             CommandMgr commandMgr_ = CommandMgr.instance();
-            commandMgr_.runInit(Server);
+            commandMgr_.runInit(Server, nType);
 
             return View();
         }
@@ -38,6 +40,8 @@ namespace autopack.Controllers
 
         public void runPrev()
         {
+            CommandMgr commandMgr_ = CommandMgr.instance();
+            commandMgr_.runPrev();
         }
 
         public string runOutput()

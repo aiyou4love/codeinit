@@ -119,7 +119,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Archive\CheckNameOnce.cs" />
     <Compile Include="Archive\CopyDirectory.cs" />
     <Compile Include="Archive\CopyFile.cs" />
     <Compile Include="Archive\CopyOnce.cs" />
@@ -136,6 +135,7 @@
     <Compile Include="Bundle\InitBundle.cs" />
     <Compile Include="Archive\Md5Info.cs" />
     <Compile Include="Command\CheckName.cs" />
+    <Compile Include="Command\CheckNameMgr.cs" />
     <Compile Include="Command\Server.cs" />
     <Compile Include="Command\Command.cs" />
     <Compile Include="Command\StringDirectory.cs" />
@@ -920,6 +920,8 @@
     <Content Include="Config\Beta\shellCommand.json" />
     <Content Include="Config\Pack\shellCommand.json" />
     <Content Include="Config\Beta\commands.json" />
+    <Content Include="Config\Beta\checkName.json" />
+    <Content Include="Config\Beta\versionNo.json" />
     <None Include="Properties\PublishProfiles\autopack.pubxml" />
     <Content Include="Scripts\easyui\demo\accordion\datagrid_data1.json" />
     <Content Include="Scripts\easyui\demo\combobox\combobox_data1.json" />

@@ -11,18 +11,30 @@ namespace autopack
 
         public Dictionary<int, Command> mCommands;
 
+        public VersionNo mVersionNo;
+
         public Queue<string> mQueue = new Queue<string>();
 
-        public void runInit(HttpServerUtilityBase nServer)
+        public void runInit(HttpServerUtilityBase nServer, int nType)
         {
             if (null != mCommands)
             {
                 mCommands.Clear();
             }
+            mVersionNo = null;
+
             StringDirectory stringDirectory_ = StringDirectory.instance();
             string sourcePath_ = stringDirectory_.mDirectorys["commands"];
             string path_ = nServer.MapPath(sourcePath_);
             mCommands = Deserialize<Dictionary<int, Command>>(path_);
+
+            sourcePath_ = stringDirectory_.mDirectorys["versionNo"];
+            path_ = nServer.MapPath(sourcePath_);
+            mVersionNo = Deserialize<VersionNo>(path_);
+
+            string directory_ = "~/version_";
+            directory_ += mVersionNo.mApkNo;
+            directory_ += mVersionNo.mUpdateNo;
 
             mCommandId = 0;
 
@@ -58,6 +70,11 @@ namespace autopack
             {
                 ShellCommandMgr shellCommandMgr_ = ShellCommandMgr.instance();
                 shellCommandMgr_.runCommand(command_.mName);
+            }
+            else if ("checkName" == command_.mType)
+            {
+                CheckNameMgr checkNameMgr_ = CheckNameMgr.instance();
+                checkNameMgr_.runCommand(command_.mName);
             }
         }
         public static CommandMgr instance()

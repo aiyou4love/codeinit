@@ -16,6 +16,7 @@ namespace autopack
 
             CommandMgr commandMgr = CommandMgr.instance();
             commandMgr.mQueue.Enqueue("$$$$命令执行开始$$$$");
+            commandMgr.mQueue.Enqueue(nCommand);
 
             mStop = false;
 
@@ -61,9 +62,9 @@ namespace autopack
             if (e.InvocationStateInfo.State == PSInvocationState.Completed)
             {
                 CommandMgr commandMgr = CommandMgr.instance();
+                commandMgr.mCommand = null;
                 commandMgr.mQueue.Enqueue("$$$$命令执行完成$$$$");
                 commandMgr.mQueue.Enqueue("$end$");
-                
                 mStop = true;
             }
         }

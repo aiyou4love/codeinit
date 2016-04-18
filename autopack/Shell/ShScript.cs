@@ -45,11 +45,13 @@ namespace autopack
             if ("" == value_) return;
             CommandMgr commandMgr = CommandMgr.instance();
             commandMgr.mQueue.Enqueue(value_);
+            
         }
         private void processExited(object sender, EventArgs e)
         {
+            CommandMgr commandMgr = CommandMgr.instance();
+            commandMgr.mCommand = null;
             mProcess.Dispose();
-
             mStop = true;
         }
 

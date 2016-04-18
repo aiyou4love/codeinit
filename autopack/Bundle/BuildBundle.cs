@@ -154,7 +154,7 @@ namespace autopack
         //    }
         //}
 
-        public List<CheckNameOnce> mCheckNameOnces { get; set; }
+        //public List<CheckNameOnce> mCheckNameOnces { get; set; }
 
         public List<CopyOnce> mCopyOnces { get; set; }
 
