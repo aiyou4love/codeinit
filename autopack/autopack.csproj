@@ -134,6 +134,7 @@
     <Compile Include="Bundle\FinishBundle.cs" />
     <Compile Include="Bundle\InitBundle.cs" />
     <Compile Include="Archive\Md5Info.cs" />
+    <Compile Include="Command\AutoPack.cs" />
     <Compile Include="Command\CheckName.cs" />
     <Compile Include="Command\CheckNameMgr.cs" />
     <Compile Include="Command\Server.cs" />

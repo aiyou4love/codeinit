@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 
@@ -11,8 +12,6 @@ namespace autopack
 
         public Dictionary<int, Command> mCommands;
 
-        public VersionNo mVersionNo;
-
         public Queue<string> mQueue = new Queue<string>();
 
         public void runInit(HttpServerUtilityBase nServer, int nType)
@@ -21,20 +20,11 @@ namespace autopack
             {
                 mCommands.Clear();
             }
-            mVersionNo = null;
 
             StringDirectory stringDirectory_ = StringDirectory.instance();
             string sourcePath_ = stringDirectory_.mDirectorys["commands"];
             string path_ = nServer.MapPath(sourcePath_);
             mCommands = Deserialize<Dictionary<int, Command>>(path_);
-
-            sourcePath_ = stringDirectory_.mDirectorys["versionNo"];
-            path_ = nServer.MapPath(sourcePath_);
-            mVersionNo = Deserialize<VersionNo>(path_);
-
-            string directory_ = "~/version_";
-            directory_ += mVersionNo.mApkNo;
-            directory_ += mVersionNo.mUpdateNo;
 
             mCommandId = 0;
 
