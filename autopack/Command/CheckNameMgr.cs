@@ -29,9 +29,7 @@ namespace autopack
                 return;
             }
             CheckName checkName_ = mCheckNames[nCommand];
-            commandMgr_.mCommand = checkName_;
             checkName_.runCommand();
-            commandMgr_.mCommand = null;
         }
         public static CheckNameMgr instance()
         {
