@@ -25,7 +25,7 @@ namespace tableJson
         static void runDataSet(DataTable nDataTable, string nDestDirectory)
         {
             mValues.Clear();
-
+			
             if (nDataTable.Columns.Count <= 0) return;
             if (nDataTable.Rows.Count <= 3) return;
             DataRow types_ = nDataTable.Rows[0];
