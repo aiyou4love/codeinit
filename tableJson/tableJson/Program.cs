@@ -27,7 +27,7 @@ namespace tableJson
             mValues.Clear();
 			
             if (nDataTable.Columns.Count <= 0) return;
-            if (nDataTable.Rows.Count <= 3) return;
+            if (nDataTable.Rows.Count < 3) return;
             DataRow types_ = nDataTable.Rows[0];
             for (int i = 2; i < nDataTable.Rows.Count; i++)
             {
